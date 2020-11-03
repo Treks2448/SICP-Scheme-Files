@@ -1,0 +1,6 @@
+(define (last-pair _list)
+  (if (null? (cdr _list))
+      (list _list)
+      (last-pair (cdr _list))))
+      
+      

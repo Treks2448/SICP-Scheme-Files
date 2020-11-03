@@ -1,0 +1,28 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname |Exercise 1.1|) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(define a 3)
+(define b (+ a 1))
+(define (square x) (* x x))
+(define (sumsqr x y) (+ (square x) (square y)))
+(define (sumsqr_largest x y z)
+  (cond ((and (> x z) (> x y))
+         (cond ((> y z) (sumsqr x y))
+               (else (sumsqr x z))))
+         (else (sumsqr z y))))
+(define (average x y)
+  (/ (+ x y) 2))
+(define (improve guess x)
+  ( average guess (/ x guess)))
+(define (good-enough? guess x)
+  (< (abs (- (square guess) x)) 0.001))
+(define (sqrt-iter guess x)
+(new-if (good-enough? guess x)
+    guess
+    (sqrt-iter (improve guess x) x)))
+(define (my_sqrt x)
+  (sqrt-iter 1.0 x))
+(define (new-if predicate then-clause else-clause)
+  ( cond (predicate then-clause)
+         (else else-clause)))
+
